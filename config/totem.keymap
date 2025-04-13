@@ -34,20 +34,21 @@
 
     combos {
         compatible = "zmk,combos";
-        
+
         // German umlauts with ALT + a/o/u
+
         combo_a_umlaut {
             timeout-ms = <50>;
             key-positions = <11 20>;
             bindings = <&kp RA(Q)>; // ä - LALT + a
         };
-        
+
         combo_o_umlaut {
             timeout-ms = <50>;
             key-positions = <11 28>;
             bindings = <&kp RA(P)>; // ö - LALT + o
         };
-        
+
         combo_u_umlaut {
             timeout-ms = <50>;
             key-positions = <11 27>;
@@ -57,21 +58,30 @@
 
     keymap {
         compatible = "zmk,keymap";
-        
+
         Base {
             display-name = "Base";
             bindings = <
-                &kp Q       &kp W       &kp E          &kp R         &kp T        &kp Z    &kp U        &kp I        &kp O       &kp P
-                &hm LGUI A  &hm LALT S  &hm LCTRL D    &hm LSHIFT F  &kp G        &kp H    &hm RSHFT J  &hm RCTRL K  &hm RALT L  &hm RGUI HASH
-&studio_unlock  &kp Y       &kp X       &kp C          &kp V         &kp B        &kp N    &kp M        &kp COMMA    &kp DOT     &kp MINUS      &kp APOSTROPHE
-                                        &mt LCTRL DEL  &lt 0 TAB     &kp SPACE    &kp RET  &lt 0 BSPC   &kp MINUS
+         &kp Q       &kp W       &kp E          &kp R         &kp T        &kp Z    &kp U        &kp I        &kp O       &kp P
+         &hm LGUI A  &hm LALT S  &hm LCTRL D    &hm LSHIFT F  &kp G        &kp H    &hm RSHFT J  &hm RCTRL K  &hm RALT L  &hm RGUI HASH
+&kp ESC  &kp Y       &kp X       &kp C          &kp V         &kp B        &kp N    &kp M        &kp COMMA    &kp DOT     &kp MINUS      &mo 2
+                                 &mt LCTRL DEL  &lt 0 TAB     &kp SPACE    &kp RET  &lt 0 BSPC   &kp MINUS
+            >;
+        };
+
+        layer_2 {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
         layer_1 {
             bindings = <
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &kp U   &trans  &kp O   &trans
+        &kp A   &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;
