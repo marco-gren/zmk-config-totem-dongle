@@ -3,7 +3,8 @@
 
 #define Base        0
 #define Nav         1
-#define Umlaut      2
+#define Sym         2
+#define Func        3
 
 &mt {
     quick-tap-ms = <100>;
@@ -43,6 +44,10 @@
                 0x00D6  // 4 - Ö
                 0x00DC  // 5 - Ü
                 0x00DF  // 6 - ß
+                0x201E  // 7 - „
+                0x201C  // 8 - “
+                0x2013  // 9 - –
+                0x2014  // 10 - —
             >;
         };
     };
@@ -52,37 +57,37 @@
 
         combo_a_umlaut {
             timeout-ms = <50>;
-            key-positions = <11 20>; // A + LALT
+            key-positions = <11 35>; // A + RALT
             bindings = <&unicode_plain 0>; // ä
         };
 
         combo_o_umlaut {
             timeout-ms = <50>;
-            key-positions = <28 20>; // O + LALT
+            key-positions = <28 35>; // O + RALT
             bindings = <&unicode_plain 1>; // ö
         };
 
         combo_u_umlaut {
             timeout-ms = <50>;
-            key-positions = <6 20>; // U + LALT
+            key-positions = <6 35>; // U + RALT
             bindings = <&unicode_plain 2>; // ü
         };
 
         combo_A_umlaut_upper {
             timeout-ms = <50>;
-            key-positions = <11 20 3>; // A + LALT + LSHIFT
+            key-positions = <11 35 3>; // A + RALT + SHIFT
             bindings = <&unicode_plain 3>; // Ä
         };
 
         combo_O_umlaut_upper {
             timeout-ms = <50>;
-            key-positions = <28 20 3>; // O + LALT + LSHIFT
+            key-positions = <28 35 3>; // O + RALT + SHIFT
             bindings = <&unicode_plain 4>; // Ö
         };
 
         combo_U_umlaut_upper {
             timeout-ms = <50>;
-            key-positions = <6 20 3>; // U + LALT + LSHIFT
+            key-positions = <6 35 3>; // U + RALT + SHIFT
             bindings = <&unicode_plain 5>; // Ü
         };
     };
@@ -94,28 +99,38 @@
             display-name = "Base";
             bindings = <
          &kp Q       &kp W       &kp E          &kp R         &kp T        &kp Z    &kp U        &kp I        &kp O       &kp P
-         &hm LGUI A  &hm LALT S  &hm LCTRL D    &hm LSHIFT F  &kp G        &kp H    &hm RSHFT J  &hm RCTRL K  &hm RALT L  &hm RGUI HASH
-&kp ESC  &kp Y       &kp X       &kp C          &kp V         &kp B        &kp N    &kp M        &kp COMMA    &kp DOT     &kp MINUS      &mo Umlaut
-                                 &mt LCTRL DEL  &lt 0 TAB     &kp SPACE    &kp RET  &lt 0 BSPC   &kp MINUS
+         &hm LGUI A  &hm LALT S  &hm LCTRL D    &hm LSHIFT F  &kp G        &kp H    &hm RSHFT J  &hm RCTRL K  &hm RALT L  &hm RGUI SS
+&kp ESC  &kp Y       &kp X       &kp C          &kp V         &kp B        &kp N    &kp M        &kp COMMA    &kp DOT     &kp MINUS      &mt RALT &mo Sym
+                                 &mt LCTRL DEL  &lt Nav TAB     &kp SPACE    &kp RET  &kp BSPC   &kp MINUS
             >;
         };
 
         Nav {
             display-name = "Nav";
             bindings = <
-              &kp TILDE       &trans     &kp UP_ARROW  &trans     &kp LBRC    &kp RBRC  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0
-              &kp LEFT_SHIFT  &kp LEFT   &kp DOWN      &kp RIGHT  &kp LBKT    &kp RBKT  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp MINUS
-&kp LEFT_ALT  &kp LEFT_WIN    &kp MINUS  &trans        &kp PLUS   &kp LPAR    &kp RPAR  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp KP_MULTIPLY  &kp PLUS
+              &kp TILDE       &trans     &kp UP_ARROW  &trans     &kp HOME    &kp PG_UP  &kp 7  &kp 8  &kp 9  &kp 0
+              &kp LEFT_SHIFT  &kp LEFT   &kp DOWN      &kp RIGHT  &kp END     &kp PG_DN  &kp 4  &kp 5  &kp 6  &kp SLASH
+&kp LALT  &kp LGUI     &kp MINUS  &trans        &kp PLUS   &kp LPAR  &kp RPAR  &kp 1  &kp 2  &kp 3  &kp ASTERISK  &kp EQUAL
                                          &trans        &trans     &trans      &trans    &trans        &kp DOT
             >;
         };
 
-        Umlaut {
-            display-name = "Umlauts";
+        Sym {
+            display-name = "Symbols";
             bindings = <
-        &trans  &trans  &trans  &trans  &trans     &trans    &unicode_plain 2   &trans     &unicode_plain 1  &trans
-        &unicode_plain 0  &unicode_plain 3  &unicode_plain 4  &unicode_plain 5  &unicode_plain 6  &trans    &trans     &trans     &trans     &trans
-&trans  &trans  &trans  &trans  &trans     &trans    &trans     &trans     &trans     &trans     &trans     &trans
+        &kp EXCLAMATION  &kp AT_SIGN   &kp HASH    &kp DLLR     &kp PERCENT   &kp CARET    &kp AMPERSAND  &kp ASTRK  &kp LPAR  &kp RPAR
+        &kp PIPE         &kp BACKSLASH &kp LCBR    &kp RCBR     &kp GRAVE     &kp TILDE    &kp LBKT       &kp RBKT   &kp LESS  &kp GREATER
+&trans  &trans          &trans        &trans      &kp UNDERSCORE &kp PLUS     &unicode_plain 7 &unicode_plain 8 &unicode_plain 9 &unicode_plain 10 &trans &trans
+                           &trans        &trans     &trans        &trans        &trans       &trans
+            >;
+        };
+
+        Func {
+            display-name = "Functions";
+            bindings = <
+        &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
+        &kp F11 &kp F12 &trans &trans &trans &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
                           &trans  &trans  &trans     &trans     &trans     &trans
             >;
         };
